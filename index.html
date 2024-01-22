@@ -81,4 +81,32 @@
         </form>
     </div>
 </body>
+
+    <script>
+    document.getElementById('kaffeForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var navn = document.getElementById('navn').value;
+        var kaffeType = document.getElementById('kaffeType').value;
+
+        fetch('https://din-backend-url.com/api/bestil-kaffe', {  // Erstat med din backend URL
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({navn: navn, kaffeType: kaffeType})
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.gratisKaffe) {
+                document.getElementById('responseMessage').textContent = 'Der bliver hentet kaffe. Send 20 kr. til 42 15 98 90. Du har fået en gratis kop kaffe!';
+            } else {
+                document.getElementById('responseMessage').textContent = 'Der bliver hentet kaffe. Send 20 kr. til 42 15 98 90.';
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            document.getElementById('responseMessage').textContent = 'Der skete en fejl, prøv venligst igen.';
+        });
+    });
+</script>
 </html>
