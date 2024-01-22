@@ -64,7 +64,7 @@
         <h1>Vil du have en kop kaffe?</h1>
         <p>Udfyld formularen nedenfor for at angive dit ønske:</p>
         
-        <form id="kaffeForm">
+        <form id="kaffeForm" action="https://hooks.airtable.com/workflows/v1/genericWebhook/applP36YrSdMzVVno/wflJmIpANrfJV89eY/wtrcvX3AY0BZwFaG3" method="post">
             <label for="navn">Indtast dit navn:</label>
             <input type="text" id="navn" name="navn" required>
 
@@ -79,32 +79,6 @@
 
             <button type="submit">Send ønske</button>
         </form>
-
-        <p id="responseMessage"></p>
     </div>
-
-    <script>
-        document.getElementById('kaffeForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            var navn = document.getElementById('navn').value;
-            var kaffeType = document.getElementById('kaffeType').value;
-
-            fetch('https://zendeskbillwerk.azurewebsites.net/api/HttpTrigger5?code=SmYgvJAdpd5-TE_Kivv5HbXSpsRTfN5GVtD2sXUzwUAuAzFuO8yXAg==', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({navn: navn, kaffeType: kaffeType})
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('responseMessage').textContent = 'Der bliver hentet kaffe. Send 20 kr. til 42 15 98 90.';
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                document.getElementById('responseMessage').textContent = 'Der skete en fejl, prøv venligst igen.';
-            });
-        });
-    </script>
 </body>
 </html>
