@@ -5,21 +5,38 @@
 </head>
 <body>
     <h1>Vil du have en kop kaffe?</h1>
-    <p>Klik på knappen nedenfor for at angive dit ønske:</p>
+    <p>Udfyld formularen nedenfor for at angive dit ønske:</p>
     
-    <button id="kaffeJa">Ja</button>
-    <button id="kaffeNej">Nej</button>
+    <form id="kaffeForm">
+        <label for="navn">Indtast dit navn:</label>
+        <input type="text" id="navn" name="navn" required><br><br>
+
+        <label for="kaffeType">Vælg en type kaffe:</label>
+        <select id="kaffeType" name="kaffeType" required>
+            <option value="">--Vælg en option--</option>
+            <option value="espresso">Espresso</option>
+            <option value="latte">Latte</option>
+            <option value="cappuccino">Cappuccino</option>
+            <option value="sort">Sort kaffe</option>
+        </select><br><br>
+
+        <button type="submit">Send ønske</button>
+    </form>
 
     <p id="kaffeStatus"></p>
 
     <script>
-        // JavaScript-kode for at håndtere klik på knapperne
-        document.getElementById("kaffeJa").addEventListener("click", function() {
-            document.getElementById("kaffeStatus").textContent = "Du ønsker en kop kaffe!";
-        });
+        // JavaScript-kode for at håndtere formularindsendelse
+        document.getElementById("kaffeForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Forhindrer formular i at blive sendt traditionelt
 
-        document.getElementById("kaffeNej").addEventListener("click", function() {
-            document.getElementById("kaffeStatus").textContent = "Du ønsker ikke en kop kaffe.";
+            var navn = document.getElementById("navn").value;
+            var kaffeType = document.getElementById("kaffeType").value;
+            if (kaffeType && navn) {
+                document.getElementById("kaffeStatus").textContent = navn + " ønsker en kop " + kaffeType + "!";
+            } else {
+                document.getElementById("kaffeStatus").textContent = "Udfyld venligst alle felter.";
+            }
         });
     </script>
 </body>
