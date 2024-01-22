@@ -3,11 +3,16 @@
 <head>
     <title>Kaffeønske</title>
 </head>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kaffeønske</title>
+</head>
 <body>
     <h1>Vil du have en kop kaffe?</h1>
     <p>Udfyld formularen nedenfor for at angive dit ønske:</p>
     
-    <form id="kaffeForm">
+    <form id="kaffeForm" action="https://hooks.airtable.com/workflows/v1/genericWebhook/applP36YrSdMzVVno/wflJmIpANrfJV89eY/wtrcvX3AY0BZwFaG3" method="post">
         <label for="navn">Indtast dit navn:</label>
         <input type="text" id="navn" name="navn" required><br><br>
 
@@ -23,21 +28,6 @@
         <button type="submit">Send ønske</button>
     </form>
 
-    <p id="kaffeStatus"></p>
-
-    <script>
-        // JavaScript-kode for at håndtere formularindsendelse
-        document.getElementById("kaffeForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Forhindrer formular i at blive sendt traditionelt
-
-            var navn = document.getElementById("navn").value;
-            var kaffeType = document.getElementById("kaffeType").value;
-            if (kaffeType && navn) {
-                document.getElementById("kaffeStatus").textContent = navn + " ønsker en kop " + kaffeType + "!";
-            } else {
-                document.getElementById("kaffeStatus").textContent = "Udfyld venligst alle felter.";
-            }
-        });
-    </script>
 </body>
 </html>
+
