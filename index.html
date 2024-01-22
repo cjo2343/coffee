@@ -2,32 +2,85 @@
 <html>
 <head>
     <title>Kaffeønske</title>
-</head>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Kaffeønske</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            color: #666;
+        }
+
+        input, select {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box; /* Makes sure the padding doesn't affect the overall width */
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Vil du have en kop kaffe?</h1>
-    <p>Udfyld formularen nedenfor for at angive dit ønske:</p>
-    
-    <form id="kaffeForm" action="https://hooks.airtable.com/workflows/v1/genericWebhook/applP36YrSdMzVVno/wflJmIpANrfJV89eY/wtrcvX3AY0BZwFaG3" method="post">
-        <label for="navn">Indtast dit navn:</label>
-        <input type="text" id="navn" name="navn" required><br><br>
+    <div class="container">
+        <h1>Vil du have en kop kaffe?</h1>
+        <p>Udfyld formularen nedenfor for at angive dit ønske:</p>
+        
+        <form id="kaffeForm" action="DIN_WEBHOOK_URL" method="post">
+            <label for="navn">Indtast dit navn:</label>
+            <input type="text" id="navn" name="navn" required>
 
-        <label for="kaffeType">Vælg en type kaffe:</label>
-        <select id="kaffeType" name="kaffeType" required>
-            <option value="">--Vælg en option--</option>
-            <option value="espresso">Espresso</option>
-            <option value="latte">Latte</option>
-            <option value="cappuccino">Cappuccino</option>
-            <option value="sort">Sort kaffe</option>
-        </select><br><br>
+            <label for="kaffeType">Vælg en type kaffe:</label>
+            <select id="kaffeType" name="kaffeType" required>
+                <option value="">--Vælg en option--</option>
+                <option value="espresso">Espresso</option>
+                <option value="latte">Latte</option>
+                <option value="cappuccino">Cappuccino</option>
+                <option value="sort">Sort kaffe</option>
+            </select>
 
-        <button type="submit">Send ønske</button>
-    </form>
-
+            <button type="submit">Send ønske</button>
+        </form>
+    </div>
 </body>
 </html>
+
 
