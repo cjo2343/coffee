@@ -71,42 +71,14 @@
             <label for="kaffeType">Vælg en type kaffe:</label>
             <select id="kaffeType" name="kaffeType" required>
                 <option value="">--Vælg en option--</option>
-                <option value="espresso">Espresso</option>
-                <option value="latte">Latte</option>
+                <option value="Espresso">Espresso</option>
+                <option value="Latte">Latte</option>
                 <option value="cappuccino">Cappuccino</option>
-                <option value="sort">Sort kaffe</option>
+                <option value="Sort">Sort kaffe</option>
             </select>
 
-            <button type="submit">Send ønske</button>
+            <button type="submit">Send bestilling!</button>
         </form>
     </div>
 </body>
-
-    <script>
-    document.getElementById('kaffeForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        var navn = document.getElementById('navn').value;
-        var kaffeType = document.getElementById('kaffeType').value;
-
-        fetch('https://gratiskaffe.azurewebsites.net/api/HttpTrigger1?code=DUbdjGH4YDqQscWeVVxHP0c2jfq7FviLPGxRQ2mbLSTgAzFuhfI6Ug==', {  // Erstat med din backend URL
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({navn: navn, kaffeType: kaffeType})
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.gratisKaffe) {
-                document.getElementById('responseMessage').textContent = 'Der bliver hentet kaffe. Send 20 kr. til 42 15 98 90. Du har fået en gratis kop kaffe!';
-            } else {
-                document.getElementById('responseMessage').textContent = 'Der bliver hentet kaffe. Send 20 kr. til 42 15 98 90.';
-            }
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-            document.getElementById('responseMessage').textContent = 'Der skete en fejl, prøv venligst igen.';
-        });
-    });
-</script>
 </html>
